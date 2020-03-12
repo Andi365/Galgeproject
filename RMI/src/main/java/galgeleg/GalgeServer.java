@@ -7,8 +7,8 @@ import java.rmi.Naming;
 public class GalgeServer {
 
     public static void main(String[] args) throws Exception {
-        GalgelegInterface glI = new Galgelogik();
         java.rmi.registry.LocateRegistry.createRegistry(8081);
+        GalgelegInterface glI = new Galgelogik();
         Naming.rebind("rmi://localhost:8081/logic",glI);
         System.out.println("Galgeservice registreret.");
 

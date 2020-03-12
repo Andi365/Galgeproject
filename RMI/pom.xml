@@ -10,7 +10,7 @@
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
-            <artifactId>Shared</artifactId>
+            <artifactId>RMI</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
@@ -19,6 +19,12 @@
             <artifactId>Galgeproject</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>3.6.00</version>
         </dependency>
     </dependencies>
 

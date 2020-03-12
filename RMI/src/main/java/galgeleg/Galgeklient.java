@@ -7,12 +7,18 @@ import java.util.Scanner;
 import game.GalgelegInterface;
 import brugerautorisation.transport.Brugeradmin;
 
-import java.rmi.Naming;
-import java.rmi.RemoteException;
-import java.util.Scanner;
+import kong.unirest.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.json.JSONObject;
+
 
 public class Galgeklient {
     public static void main(String[] args) throws Exception{
+        /*HttpResponse answer;
+        Scanner scan = new Scanner(System.in);
+        boolean isVerified = false, lost = false;
+
+        System.out.println("-- Velkommen til dette galgelegs spil --");*/
 
         GalgelegInterface logic = (GalgelegInterface) Naming.lookup("rmi://localhost:8081/logic");
         //GalgelegInterface glI =(GalgelegInterface) Naming.lookup("rmi://dist.saluton.dk:23609/kontotjeneste");

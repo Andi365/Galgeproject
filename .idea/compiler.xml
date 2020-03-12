@@ -13,8 +13,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Galgeproject" target="11" />
-      <module name="rest" target="" />
+      <module name="Galgeproject" target="" />
+      <module name="rest" target="11" />
       <module name="RMI" target="" />
       <module name="Shared" target="" />
     </bytecodeTargetLevel>
