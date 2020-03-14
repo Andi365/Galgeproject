@@ -8,23 +8,16 @@ public class Game {
     private int lives;
     private boolean isGameOver;
     private String statusMsg;
-    private String wholeWord;
+    private boolean gameIsWon;
 
-    public Game(String visibleWord, int lives, ArrayList<String> usedLetters, boolean isGameOver, String statusMsg) {
+    public Game(String visibleWord, int lives, ArrayList<String> usedLetters,
+                boolean isGameOver, String statusMsg, boolean gameIsWon) {
         this.visibleWord = visibleWord;
         this.lives = lives;
         this.usedLetters = usedLetters;
         this.isGameOver = isGameOver;
         this.statusMsg = statusMsg;
-    }
-
-    public Game(String visibleWord, int lives, ArrayList<String> usedLetters, boolean isGameOver, String statusMsg, String wholeWord) {
-        this.visibleWord = visibleWord;
-        this.lives = lives;
-        this.usedLetters = usedLetters;
-        this.isGameOver = isGameOver;
-        this.statusMsg = statusMsg;
-        this.wholeWord = wholeWord;
+        this.gameIsWon = gameIsWon;
     }
 
     public String getVisibleWord() {
@@ -67,11 +60,11 @@ public class Game {
         this.statusMsg = statusMsg;
     }
 
-    public String getWholeWord() {
-        return wholeWord;
+    public boolean isGameIsWon() {
+        return gameIsWon;
     }
 
-    public void setWholeWord(String wholeWord) {
-        this.wholeWord = wholeWord;
+    public void setGameIsWon(boolean gameIsWon) {
+        this.gameIsWon = gameIsWon;
     }
 }

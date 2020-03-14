@@ -1,14 +1,14 @@
 package galgeleg;
 
-import java.util.Scanner;
-
-import kong.unirest.Unirest;
 import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 import kong.unirest.json.JSONObject;
+
+import java.util.Scanner;
 
 
 public class Galgeklient {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         HttpResponse response;
         JSONObject game;
         JSONObject status;
@@ -22,11 +22,11 @@ public class Galgeklient {
 
             System.out.println("--- Please enter password ---");
             String usrPass = scan.next();
-            response = Unirest.post("http://localhost:8080/login").field("user",usrName).field("pass",usrPass).asJson();
-            //response = Unirest.post("http://localhost:8080/login").body(usrName).body(usrPass).asJson();
+            response = Unirest.post("http://localhost:8080/login").body("{\"user\":\"" + usrName +"\",\"pass\":\"" + usrPass +"\"}").asString();
+            if (response.getBody().toString().equals("true")) {
+                loggedIn = true;
+            }
 
-            status = new JSONObject(String.valueOf(response.getBody()));
-            System.out.println(status);
         } while (!loggedIn);
 
         do {
@@ -43,12 +43,11 @@ public class Galgeklient {
                 response = Unirest.post("http://localhost:8080/guess").body(guess).asJson();
 
                 status = new JSONObject(String.valueOf(response.getBody()));
-
                 status(status);
 
             } while(!status.getBoolean("gameOver"));
 
-            System.out.println(status.getBoolean("gameOver") ? "You won!" : "You lost, the word was: " + status.get("wholeWord"));
+            System.out.println(status.getBoolean("gameIsWon") ? "You won!" : "You lost");
 
 
             System.out.println("wanna play again? Press \"0\" for no, \"1\" for yes");
@@ -57,7 +56,7 @@ public class Galgeklient {
                 playAgain = false;
             }
 
-        } while (!playAgain);
+        } while (playAgain);
     }
 
 

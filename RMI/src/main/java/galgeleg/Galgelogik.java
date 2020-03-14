@@ -1,6 +1,6 @@
 package galgeleg;
 
-import game.brugerautorisation.transport.rmi.Brugeradmin;
+import brugerautorisation.transport.rmi.Brugeradmin;
 import game.GalgelegInterface;
 
 import java.io.BufferedReader;

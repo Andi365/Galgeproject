@@ -1,4 +1,4 @@
-package game.brugerautorisation.data;
+package brugerautorisation.data;
 
 import java.io.Serializable;
 import java.util.HashMap;
