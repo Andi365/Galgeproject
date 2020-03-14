@@ -11,6 +11,7 @@ public class GalgeServer {
         GalgelegInterface glI = new Galgelogik();
         Naming.rebind("rmi://localhost:8081/logic",glI);
         System.out.println("Galgeservice registreret.");
+        System.out.println(glI.getSynligtOrd() + " " + glI.getOrdet());
 
         /*
         System.setProperty("java.rmi.server.hostname", "dist.saluton.dk");

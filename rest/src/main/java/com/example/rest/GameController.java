@@ -8,7 +8,6 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -17,32 +16,30 @@ public class GameController {
 
     public void getInfo() throws RemoteException, NotBoundException, MalformedURLException {
         logik = (GalgelegInterface) Naming.lookup("rmi://localhost:8081/logic");
+
     }
 
 
-    @GetMapping("/game")
+    @GetMapping("/newgame")
     public Game getGame() throws RemoteException, NotBoundException, MalformedURLException {
         getInfo();
-
-        //if (logik != null) {
-            //return new Game("hej",0, new ArrayList<String>(),false);
-            return new Game(logik.getSynligtOrd(), logik.getAntalForkerteBogstaver(), logik.getBrugteBogstaver(), logik.erSpilletSlut());
-        //}
-        //return null;
+        System.out.println("newgame started");
+        return new Game(logik.getSynligtOrd(), logik.getAntalForkerteBogstaver(),
+                logik.getBrugteBogstaver(), logik.erSpilletSlut(), "-- Nyt spil er startet --");
     }
 
-    @PostMapping("/game")
-    @ResponseBody
-    public void guess(@RequestParam(defaultValue = "guess") String guess) throws RemoteException, MalformedURLException, NotBoundException {
-        getInfo();
+    @PostMapping("/guess")
+    public Game guessLetter(@RequestBody String guess) throws RemoteException {
+        System.out.println(guess);
         logik.gætBogstav(guess);
-        System.out.println(guess);
-    }
+        System.out.println("guess confirmed");
 
-
-    @PostMapping("/test")
-    public String register(@RequestBody String guess) {
-        System.out.println(guess);
-        return "hej" + guess;
+        if(logik.erSpilletVundet()) {
+            return new Game(logik.getSynligtOrd(), logik.getAntalForkerteBogstaver(),
+                    logik.getBrugteBogstaver(), logik.erSpilletSlut(), "Du gættede på " + guess, logik.getOrdet());
+        } else {
+            return new Game(logik.getSynligtOrd(), logik.getAntalForkerteBogstaver(),
+                    logik.getBrugteBogstaver(), logik.erSpilletSlut(), "Du gættede på " + guess);
+        }
     }
 }

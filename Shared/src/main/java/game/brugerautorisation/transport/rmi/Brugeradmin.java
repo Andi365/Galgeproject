@@ -1,6 +1,6 @@
-package brugerautorisation.transport;
+package game.brugerautorisation.transport.rmi;
 
-import brugerautorisation.data.Bruger;
+import game.brugerautorisation.data.Bruger;
 
 @SuppressWarnings("NonAsciiCharacters")
 public interface Brugeradmin extends java.rmi.Remote {

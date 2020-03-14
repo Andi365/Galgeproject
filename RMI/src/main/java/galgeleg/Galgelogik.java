@@ -1,6 +1,6 @@
 package galgeleg;
 
-import brugerautorisation.transport.Brugeradmin;
+import game.brugerautorisation.transport.rmi.Brugeradmin;
 import game.GalgelegInterface;
 
 import java.io.BufferedReader;
@@ -112,6 +112,7 @@ public class Galgelogik extends UnicastRemoteObject implements GalgelegInterface
     }
 
     public void gætBogstav(String bogstav) {
+        logStatus();
         if (bogstav.length() != 1) return;
         System.out.println("Der gættes på bogstavet: " + bogstav);
         if (brugteBogstaver.contains(bogstav)) return;
